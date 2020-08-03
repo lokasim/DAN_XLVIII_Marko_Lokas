@@ -147,10 +147,11 @@ namespace PizzaRestaurant.ViewModel
                 {
                     createOrder.gridWaiting.Visibility = Visibility.Visible;
                 }
+                
+                
                 RefreshViewList();
             }
         }
-
         private bool CanCreateOrderExecute()
         {
             Service s = new Service();

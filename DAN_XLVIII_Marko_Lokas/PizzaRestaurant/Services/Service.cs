@@ -334,6 +334,24 @@ namespace PizzaRestaurant.Services
             }
         }
 
+        public List<vwOrder> GetAcceptOrder(string jmbg)
+        {
+            try
+            {
+                using (PizzaRestoranEntities context = new PizzaRestoranEntities())
+                {
+                    List<vwOrder> list = new List<vwOrder>();
+                    list = (from x in context.vwOrders where x.JMBG == jmbg select x).ToList();
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception: " + ex.Message.ToString());
+                return null;
+            }
+        }
+
 
         public List<vwMenu> GetAllMenu()
         {

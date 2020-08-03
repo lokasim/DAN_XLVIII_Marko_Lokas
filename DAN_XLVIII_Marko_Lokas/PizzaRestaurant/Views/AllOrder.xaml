@@ -10,7 +10,8 @@
              d:DesignWidth="970">
     <Grid>
         <Grid MinWidth="950"
-              MinHeight="500">
+              MinHeight="500"
+              Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="75" />
                 <RowDefinition Height="355*" />
