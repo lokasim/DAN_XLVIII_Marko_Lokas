@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="PizzaRestaurant.Views.PendingOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PizzaRestaurant.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="500"
+             d:DesignWidth="970">
+    <Grid>
+        <Grid MinWidth="950"
+              MinHeight="500">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="355*" />
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <Grid Grid.Row="0">
+                <Label  x:Name="lblCreateOrder"
+                        Margin="40,15,300,0"
+                        Foreground="#4caf50"
+                        FontWeight="Bold"
+                        FontSize="30"
+                        Height="64">Pending Order</Label>
+                <Border Grid.Row="0"
+                        BorderThickness="0"
+                        Margin="30,65,30,0"
+                        Height="10"
+                        Background="#4caf50"
+                        CornerRadius="5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"></Border>
+            </Grid>
+            <TextBlock Foreground="Orange"
+                       x:Name="msgNoOrder"
+                       Margin="32 20 0 0"
+                       Grid.Row="1"
+                       FontSize="16">Take a break, there are currently no orders pending...</TextBlock>
+            <StackPanel VerticalAlignment="Top"
+                        x:Name="msgOrder"
+                        HorizontalAlignment="Left"
+                        Grid.Row="1"
+                        Margin="32,20,0,0">
+                <TextBlock Foreground="Orange"
+                           Margin="0"
+                           FontSize="16">Click on the order to approve or reject it...</TextBlock>
+                <!--DataGrid-->
+                <DataGrid Name="DataGridOrderEmployeeHoldOn"
+                          Grid.Row="0"
+                          Grid.Column="1"
+                          ItemsSource="{Binding AllOrderList, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding AllOrder, UpdateSourceTrigger=PropertyChanged}"
+                          SelectionChanged="DataGridOrder_SelectionChanged"
+                          IsReadOnly="True"
+                          FontSize="14"
+                          Height="auto"
+                          Width="auto"
+                          Margin="0 10 0 0"
+                          MinColumnWidth="75"
+                          Background="White"
+                          AlternatingRowBackground="LightYellow"
+                          HorizontalContentAlignment="Center"
+                          MaxColumnWidth="200"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Right"
+                          HeadersVisibility="Column"
+                          AutoGenerateColumns="False"
+                          HorizontalGridLinesBrush="Black"
+                          BorderBrush="LightGray"
+                          BorderThickness="2"
+                          Foreground="White"
+                          FontWeight="Medium">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order"
+                                            Binding="{Binding OrderID}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextWrapping"
+                                            Value="Wrap" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="DateTime Ordering"
+                                            Binding="{Binding DateTimeOrder, StringFormat=dd. MMMM yyyy. HH:mm}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextWrapping"
+                                            Value="Wrap" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Total Price (RSD)"
+                                            Binding="{Binding TotalPrice, StringFormat=N2}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextWrapping"
+                                            Value="Wrap" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PizzaRestoranModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblCategory">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblGuest">
+    <Key>
+      <PropertyRef Name="GuestID" />
+    </Key>
+    <Property Name="GuestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuestName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="GuestSurname" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="JMBG" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTimeOrder" Type="datetime" Nullable="false" />
+    <Property Name="Guest" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="int" Nullable="false" />
+    <Property Name="OrderStatus" Type="int" Nullable="false" />
+    <Property Name="Archived" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblOrderItem">
+    <Key>
+      <PropertyRef Name="OrderItemID" />
+    </Key>
+    <Property Name="OrderItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="int" Nullable="false" />
+    <Property Name="ProductPrice" Type="int" Nullable="false" />
+    <Property Name="ProductQuantity" Type="int" Nullable="false" />
+    <Property Name="OrderName" Type="int" Nullable="false" />
+    <Property Name="OrderSum" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblOrderStatus">
+    <Key>
+      <PropertyRef Name="OrderStatusID" />
+    </Key>
+    <Property Name="OrderStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PriceProduct" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaRestoran.dbo.vwMenu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwMenu">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="CategoryName" />
+      <PropertyRef Name="ProductName" />
+      <PropertyRef Name="ProductDescription" />
+      <PropertyRef Name="PriceProduct" />
+      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PriceProduct" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PizzaRestoran.dbo.vwOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwOrder">
+    <Key>
+      <PropertyRef Name="OrderItemID" />
+      <PropertyRef Name="ProductName" />
+      <PropertyRef Name="ProductPrice" />
+      <PropertyRef Name="ProductQuantity" />
+      <PropertyRef Name="OrderName" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="DateTimeOrder" />
+      <PropertyRef Name="Guest" />
+      <PropertyRef Name="TotalPrice" />
+      <PropertyRef Name="Archived" />
+      <PropertyRef Name="OrderStatus" />
+      <PropertyRef Name="GuestID" />
+      <PropertyRef Name="GuestName" />
+      <PropertyRef Name="GuestSurname" />
+      <PropertyRef Name="JMBG" />
+      <PropertyRef Name="EMail" />
+      <PropertyRef Name="OrderStatusID" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="ProductDescription" />
+      <PropertyRef Name="CategoryName" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="PriceProduct" />
+      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Expr3" />
+      <PropertyRef Name="OrderSum" />
+    </Key>
+    <Property Name="OrderItemID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="int" Nullable="false" />
+    <Property Name="ProductPrice" Type="int" Nullable="false" />
+    <Property Name="ProductQuantity" Type="int" Nullable="false" />
+    <Property Name="OrderName" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="DateTimeOrder" Type="datetime" Nullable="false" />
+    <Property Name="Guest" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="int" Nullable="false" />
+    <Property Name="Archived" Type="int" Nullable="false" />
+    <Property Name="OrderStatus" Type="int" Nullable="false" />
+    <Property Name="GuestID" Type="int" Nullable="false" />
+    <Property Name="GuestName" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="GuestSurname" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="JMBG" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OrderStatusID" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CategoryName" Type="int" Nullable="false" />
+    <Property Name="Expr2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PriceProduct" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Expr3" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderSum" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Order_Guest">
+    <End Role="tblGuest" Type="Self.tblGuest" Multiplicity="1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGuest">
+        <PropertyRef Name="GuestID" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="Guest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_OrderStatus">
+    <End Role="tblOrderStatus" Type="Self.tblOrderStatus" Multiplicity="1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrderStatus">
+        <PropertyRef Name="OrderStatusID" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="OrderStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Order">
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="1" />
+    <End Role="tblOrderItem" Type="Self.tblOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrder">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="tblOrderItem">
+        <PropertyRef Name="OrderName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Product">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+    <End Role="tblOrderItem" Type="Self.tblOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="tblOrderItem">
+        <PropertyRef Name="ProductName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="1" />
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCategory">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tblProduct">
+        <PropertyRef Name="CategoryName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PizzaRestoranModelStoreContainer">
+    <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGuest" EntityType="Self.tblGuest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrderItem" EntityType="Self.tblOrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrderStatus" EntityType="Self.tblOrderStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwMenu" EntityType="Self.vwMenu" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwMenu].[ProductID] AS [ProductID], 
+    [vwMenu].[CategoryName] AS [CategoryName], 
+    [vwMenu].[ProductName] AS [ProductName], 
+    [vwMenu].[ProductDescription] AS [ProductDescription], 
+    [vwMenu].[PriceProduct] AS [PriceProduct], 
+    [vwMenu].[CategoryID] AS [CategoryID], 
+    [vwMenu].[Expr1] AS [Expr1]
+    FROM [dbo].[vwMenu] AS [vwMenu]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwOrder" EntityType="Self.vwOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwOrder].[OrderItemID] AS [OrderItemID], 
+    [vwOrder].[ProductName] AS [ProductName], 
+    [vwOrder].[ProductPrice] AS [ProductPrice], 
+    [vwOrder].[ProductQuantity] AS [ProductQuantity], 
+    [vwOrder].[OrderName] AS [OrderName], 
+    [vwOrder].[OrderID] AS [OrderID], 
+    [vwOrder].[DateTimeOrder] AS [DateTimeOrder], 
+    [vwOrder].[Guest] AS [Guest], 
+    [vwOrder].[TotalPrice] AS [TotalPrice], 
+    [vwOrder].[Archived] AS [Archived], 
+    [vwOrder].[OrderStatus] AS [OrderStatus], 
+    [vwOrder].[GuestID] AS [GuestID], 
+    [vwOrder].[GuestName] AS [GuestName], 
+    [vwOrder].[GuestSurname] AS [GuestSurname], 
+    [vwOrder].[JMBG] AS [JMBG], 
+    [vwOrder].[EMail] AS [EMail], 
+    [vwOrder].[OrderStatusID] AS [OrderStatusID], 
+    [vwOrder].[Expr1] AS [Expr1], 
+    [vwOrder].[ProductID] AS [ProductID], 
+    [vwOrder].[ProductDescription] AS [ProductDescription], 
+    [vwOrder].[CategoryName] AS [CategoryName], 
+    [vwOrder].[Expr2] AS [Expr2], 
+    [vwOrder].[PriceProduct] AS [PriceProduct], 
+    [vwOrder].[CategoryID] AS [CategoryID], 
+    [vwOrder].[Expr3] AS [Expr3], 
+    [vwOrder].[OrderSum] AS [OrderSum]
+    FROM [dbo].[vwOrder] AS [vwOrder]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Order_Guest" Association="Self.FK_Order_Guest">
+      <End Role="tblGuest" EntitySet="tblGuest" />
+      <End Role="tblOrder" EntitySet="tblOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+      <End Role="tblOrderStatus" EntitySet="tblOrderStatus" />
+      <End Role="tblOrder" EntitySet="tblOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
+      <End Role="tblOrder" EntitySet="tblOrder" />
+      <End Role="tblOrderItem" EntitySet="tblOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Product" Association="Self.FK_OrderItem_Product">
+      <End Role="tblProduct" EntitySet="tblProduct" />
+      <End Role="tblOrderItem" EntitySet="tblOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="tblCategory" EntitySet="tblCategory" />
+      <End Role="tblProduct" EntitySet="tblProduct" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
