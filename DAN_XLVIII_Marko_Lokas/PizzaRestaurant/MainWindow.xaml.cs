@@ -100,7 +100,7 @@ namespace PizzaRestaurant
             Service s = new Service();
             string jmbg = LoggedGuest.jmbg;
             List<vwOrder> accept = s.GetAcceptOrder(jmbg);
-            if (accept != null)
+            if (accept.Count != 0)
             {
                 if (accept.LastOrDefault().OrderStatus == 2)
                 {
