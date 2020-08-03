@@ -212,7 +212,14 @@ namespace PizzaRestaurant.ViewModel
 
         public bool CanDeleteExecute()
         {
-            return true;
+            if(archivedOrder.OrderNumber.Text.Trim() == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         /// <summary>

@@ -236,11 +236,83 @@
               Grid.Column="1"
               VerticalAlignment="Top"
               HorizontalAlignment="Stretch"></Grid>
+        <TextBlock x:Name="processOrdering"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Foreground="Orange"
+                   FontSize="18"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Center"
+                   Margin="0 190">Ordering process: Click on the Orders > Create an order</TextBlock>
+        <DataGrid x:Name="DataGridAllMenu"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  ItemsSource="{Binding AllMenuList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding AllMenu, UpdateSourceTrigger=PropertyChanged}"
+                  IsReadOnly="True"
+                  FontSize="14"
+                  Height="auto"
+                  Width="auto"
+                  Margin="10 230 10 0"
+                  MinColumnWidth="75"
+                  Background="White"
+                  AlternatingRowBackground="LightYellow"
+                  HorizontalContentAlignment="Center"
+                  MaxColumnWidth="200"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  HorizontalGridLinesBrush="Black"
+                  BorderBrush="LightGray"
+                  BorderThickness="2"
+                  Foreground="White"
+                  FontWeight="Medium">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Category"
+                                    Binding="{Binding Expr1}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment"
+                                    Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Product"
+                                    Binding="{Binding ProductName}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Description"
+                                    Binding="{Binding ProductDescription}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Price (RSD)"
+                                    Binding="{Binding PriceProduct, StringFormat=N2}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping"
+                                    Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Grid x:Name="welcomeMsg"
               Grid.Row="1"
               Grid.Column="1"
               VerticalAlignment="Top"
               HorizontalAlignment="Center">
+            
             <TextBlock Margin="0 100"
                        x:Name="msgHappy"
                        Foreground="Orange"

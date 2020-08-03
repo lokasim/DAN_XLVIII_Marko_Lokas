@@ -58,16 +58,7 @@ namespace PizzaRestaurant.Views
         {
             e.Handled = !NumberAllowed(e.Text);
         }
-
-        /// <summary>
-        /// A method used to refresh a list of archived orders
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RefreshSector_Click(object sender, RoutedEventArgs e)
-        {
-            this.DataContext = new ArchivedOrderViewModel(this);
-        }
+        
 
         public void RefreshList()
         {

@@ -296,6 +296,12 @@
                         Grid.Row="2"
                         BorderThickness="2">
                     <Grid Grid.Row="2">
+                        <Label Foreground="Red"
+                               x:Name="errorText"
+                               FontSize="16"
+                               FontStyle="Italic"
+                               Margin="20 10"
+                               VerticalAlignment="Center"></Label>
                         <Button HorizontalAlignment="Right"
                                 Background="Orange"
                                 BorderThickness="0"

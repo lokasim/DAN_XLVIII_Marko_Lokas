@@ -45,6 +45,8 @@ namespace PizzaRestaurant
             if (LoginViewModel.employeeLoging == true)
             {
                 msgHappy.Text = "We wish you happy work :)".ToString();
+                DataGridAllMenu.Visibility = Visibility.Collapsed;
+                processOrdering.Visibility = Visibility.Collapsed;
                 lblPrezime.Content = "Employee".ToString();
                 lblIme.Content = "".ToString(); ;
                 var menuOrders = new List<Subitem>
@@ -68,7 +70,7 @@ namespace PizzaRestaurant
                 lblIme.Content = LoggedGuest.name;
                 lblPrezime.Content = LoggedGuest.surname;
                 msgHappy.Text = "Thank you for using our services :)".ToString();
-
+                
                 var menuOrders = new List<Subitem>
                     {
                         new Subitem("Create an order", new CreateOrder()),
@@ -89,6 +91,9 @@ namespace PizzaRestaurant
 
             //Current time
             Vreme();
+
+            DataGridAllMenu.Visibility = Visibility.Visible;
+            processOrdering.Visibility = Visibility.Visible;
         }
 
         /// <summary>

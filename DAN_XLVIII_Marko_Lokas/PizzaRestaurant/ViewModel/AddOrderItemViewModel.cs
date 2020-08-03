@@ -131,7 +131,14 @@ namespace PizzaRestaurant.ViewModel
 
         private bool CanSaveExecute()
         {
-            return true;
+            if(addOrderItem.txtQuantity.Text.Trim() == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private ICommand close;

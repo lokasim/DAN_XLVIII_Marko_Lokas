@@ -1,4 +1,6 @@
-﻿using PizzaRestaurant.Views;
+﻿using PizzaRestaurant.Models;
+using PizzaRestaurant.Services;
+using PizzaRestaurant.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,44 @@ namespace PizzaRestaurant.ViewModel
     {
         readonly MainWindow mainWindow;
 
+        private vwMenu allMenu;
+        public vwMenu AllMenu
+        {
+            get
+            {
+                return allMenu;
+            }
+            set
+            {
+                allMenu = value;
+                OnPropertyChanged("AllMenu");
+            }
+        }
+
+        private List<vwMenu> allMenuList;
+        public List<vwMenu> AllMenuList
+        {
+            get
+            {
+                return allMenuList;
+            }
+            set
+            {
+                allMenuList = value;
+                OnPropertyChanged("AllMenuList");
+            }
+        }
+
         Login login = new Login();
 
         #region Constructor
         public MainWindowViewModel(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+
+            Service s = new Service();
+
+            AllMenuList = s.GetAllMenu().ToList();
         }
         #endregion
     }
