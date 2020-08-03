@@ -244,7 +244,7 @@
                    FontStyle="Italic"
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
-                   Margin="0 40">asdf</TextBlock>
+                   Margin="0 240">asdf</TextBlock>
         <TextBlock x:Name="processOrdering"
                    Grid.Row="1"
                    Grid.Column="1"
@@ -270,7 +270,7 @@
                   MaxColumnWidth="200"
                   VerticalAlignment="Top"
                   HorizontalAlignment="Center"
-                  Visibility="Visible"
+                  Visibility="Collapsed"
                   HeadersVisibility="Column"
                   AutoGenerateColumns="False"
                   HorizontalGridLinesBrush="Black"

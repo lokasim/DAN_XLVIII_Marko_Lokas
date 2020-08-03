@@ -95,7 +95,7 @@ namespace PizzaRestaurant
 
         }
 
-        public void PrintMessage()
+        public async void PrintMessage()
         {
             Service s = new Service();
             string jmbg = LoggedGuest.jmbg;
@@ -105,12 +105,16 @@ namespace PizzaRestaurant
                 if (accept.LastOrDefault().OrderStatus == 2)
                 {
                     acceptReject.Text = "Your order has been approved".ToString();
-                    Task.Delay(2000);
+                    await Task.Delay(2000);
+                    acceptReject.Text = "".ToString();
+                    DataGridAllMenu.Visibility = Visibility.Visible;
                 }
                 if (accept.LastOrDefault().OrderStatus == 3)
                 {
                     acceptReject.Text = "Your order has been declined".ToString();
-                    Task.Delay(2000);
+                    await Task.Delay(2000);
+                    acceptReject.Text = "".ToString();
+                    DataGridAllMenu.Visibility = Visibility.Visible;
                 }
             }
         }
