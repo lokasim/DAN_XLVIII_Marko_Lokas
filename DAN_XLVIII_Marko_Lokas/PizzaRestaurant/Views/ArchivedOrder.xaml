@@ -10,7 +10,7 @@
              d:DesignWidth="970">
     <Grid>
         <Grid MinWidth="950"
-              MinHeight="500">
+              MinHeight="500" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="75" />
                 <RowDefinition Height="355*" />
@@ -23,18 +23,7 @@
                         FontWeight="Bold"
                         FontSize="30"
                         Height="64">Archived orders</Label>
-                <Button x:Name="refreshSector"
-                        Style="{StaticResource MaterialDesignToolForegroundButton}"
-                        Click="RefreshSector_Click"
-                        HorizontalAlignment="Left">
-                    <materialDesign:PackIcon Kind="Refresh"
-                                             ToolTip="Refresh Archived Order List"
-                                             Margin="262 0 0 0"
-                                             Foreground="Orange"
-                                             Height="30"
-                                             Width="30"
-                                             VerticalAlignment="Center" />
-                </Button>
+                
                 <Border Grid.Row="0"
                         BorderThickness="0"
                         Margin="30,65,30,0"

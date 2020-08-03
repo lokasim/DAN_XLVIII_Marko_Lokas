@@ -5,8 +5,6 @@ using PizzaRestaurant.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -212,7 +210,14 @@ namespace PizzaRestaurant.ViewModel
 
         public bool CanDeleteExecute()
         {
-            return true;
+            if(archivedOrder.OrderNumber.Text.Trim() == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         /// <summary>

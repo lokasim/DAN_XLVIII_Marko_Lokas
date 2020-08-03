@@ -5,8 +5,6 @@ using PizzaRestaurant.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -131,7 +129,14 @@ namespace PizzaRestaurant.ViewModel
 
         private bool CanSaveExecute()
         {
-            return true;
+            if(addOrderItem.txtQuantity.Text.Trim() == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private ICommand close;

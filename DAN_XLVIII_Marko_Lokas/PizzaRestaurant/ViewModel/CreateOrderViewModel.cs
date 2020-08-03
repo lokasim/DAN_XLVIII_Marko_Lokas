@@ -2,11 +2,8 @@
 using PizzaRestaurant.Models;
 using PizzaRestaurant.Services;
 using PizzaRestaurant.Views;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -147,10 +144,11 @@ namespace PizzaRestaurant.ViewModel
                 {
                     createOrder.gridWaiting.Visibility = Visibility.Visible;
                 }
+                
+                
                 RefreshViewList();
             }
         }
-
         private bool CanCreateOrderExecute()
         {
             Service s = new Service();

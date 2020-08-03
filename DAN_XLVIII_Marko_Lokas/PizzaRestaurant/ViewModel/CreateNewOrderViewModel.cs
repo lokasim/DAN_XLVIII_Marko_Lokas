@@ -5,8 +5,6 @@ using PizzaRestaurant.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -247,13 +245,9 @@ namespace PizzaRestaurant.ViewModel
                 }
                 createNewOrder.DataGridAllMenu.UnselectAll();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-            }
-            finally
-            {
-
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -431,25 +425,40 @@ namespace PizzaRestaurant.ViewModel
         /// </summary>
         private void PlaceOrderNowExecute()
         {
-            using (PizzaRestoranEntities context = new PizzaRestoranEntities())
+            MessageBoxResult dialogDelete = Xceed.Wpf.Toolkit.MessageBox.Show($"Do you want to order products that are in your cart?", "Sending an order", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (dialogDelete == MessageBoxResult.Yes)
             {
-                DateTime dateTime = DateTime.Now;
+                using (PizzaRestoranEntities context = new PizzaRestoranEntities())
+                {
+                    DateTime dateTime = DateTime.Now;
 
-                tblOrder orderSave = (from r in context.tblOrders where r.Guest == LoggedGuest.id where r.OrderStatus == 1 select r).First();
-                orderSave.DateTimeOrder = dateTime;
-                orderSave.TotalPrice = TotalSum;
-                context.SaveChanges();
+                    tblOrder orderSave = (from r in context.tblOrders where r.Guest == LoggedGuest.id where r.OrderStatus == 1 select r).First();
+                    orderSave.DateTimeOrder = dateTime;
+                    orderSave.TotalPrice = TotalSum;
+                    context.SaveChanges();
+                }
+                Xceed.Wpf.Toolkit.MessageBox.Show("You have successfully placed your order.", "Order shipped", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+                IsUpdateItem = true;
+
+                createNewOrder.Close();
             }
-            Xceed.Wpf.Toolkit.MessageBox.Show("You have successfully placed your order.", "Create order", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-
-            IsUpdateItem = true;
-
-            createNewOrder.Close();
         }
 
         private bool CanPlaceOrderNowExecute()
         {
-            return true;
+            if(TotalSum > 250000)
+            {
+                createNewOrder.errorText.Content = "The order exceeds the limit of 250.000,oo RSD\nYou can order products worth up to 250.000,oo RSD.".ToString();
+                createNewOrder.errorText.Visibility = Visibility.Visible;
+                return false;
+            }
+            else
+            {
+                createNewOrder.errorText.Visibility = Visibility.Collapsed;
+                return true;
+            }
         }
         #endregion
     }

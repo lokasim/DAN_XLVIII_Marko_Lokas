@@ -1,21 +1,16 @@
 ﻿using MaterialDesignThemes.Wpf;
+using PizzaRestaurant.Models;
+using PizzaRestaurant.Services;
 using PizzaRestaurant.ViewModel;
 using PizzaRestaurant.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace PizzaRestaurant
@@ -45,6 +40,9 @@ namespace PizzaRestaurant
             if (LoginViewModel.employeeLoging == true)
             {
                 msgHappy.Text = "We wish you happy work :)".ToString();
+                acceptReject.Text = "".ToString();
+                DataGridAllMenu.Visibility = Visibility.Collapsed;
+                processOrdering.Visibility = Visibility.Collapsed;
                 lblPrezime.Content = "Employee".ToString();
                 lblIme.Content = "".ToString(); ;
                 var menuOrders = new List<Subitem>
@@ -69,6 +67,11 @@ namespace PizzaRestaurant
                 lblPrezime.Content = LoggedGuest.surname;
                 msgHappy.Text = "Thank you for using our services :)".ToString();
 
+                if (LoggedGuest.name != null || LoggedGuest.name != "")
+                {
+                    PrintMessage();
+                }
+
                 var menuOrders = new List<Subitem>
                     {
                         new Subitem("Create an order", new CreateOrder()),
@@ -89,8 +92,32 @@ namespace PizzaRestaurant
 
             //Current time
             Vreme();
+
         }
 
+        public async void PrintMessage()
+        {
+            Service s = new Service();
+            string jmbg = LoggedGuest.jmbg;
+            List<vwOrder> accept = s.GetAcceptOrder(jmbg);
+            if (accept != null)
+            {
+                if (accept.LastOrDefault().OrderStatus == 2)
+                {
+                    acceptReject.Text = "Your order has been approved".ToString();
+                    await Task.Delay(2000);
+                    acceptReject.Text = "".ToString();
+                    DataGridAllMenu.Visibility = Visibility.Visible;
+                }
+                if (accept.LastOrDefault().OrderStatus == 3)
+                {
+                    acceptReject.Text = "Your order has been declined".ToString();
+                    await Task.Delay(2000);
+                    acceptReject.Text = "".ToString();
+                    DataGridAllMenu.Visibility = Visibility.Visible;
+                }
+            }
+        }
         /// <summary>
         /// Method to change the menu
         /// </summary>
@@ -98,6 +125,10 @@ namespace PizzaRestaurant
         public void SwitchScreen(object sender)
         {
             welcomeMsg.Visibility = Visibility.Collapsed;
+            DataGridAllMenu.Visibility = Visibility.Collapsed;
+            processOrdering.Visibility = Visibility.Collapsed;
+            acceptReject.Visibility = Visibility.Collapsed;
+
             var screen = ((UserControl)sender);
             if (screen != null)
             {

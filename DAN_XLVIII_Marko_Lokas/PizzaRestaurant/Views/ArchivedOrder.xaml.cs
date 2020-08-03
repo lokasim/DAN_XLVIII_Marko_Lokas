@@ -1,20 +1,9 @@
 ﻿using PizzaRestaurant.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PizzaRestaurant.Views
 {
@@ -58,16 +47,7 @@ namespace PizzaRestaurant.Views
         {
             e.Handled = !NumberAllowed(e.Text);
         }
-
-        /// <summary>
-        /// A method used to refresh a list of archived orders
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RefreshSector_Click(object sender, RoutedEventArgs e)
-        {
-            this.DataContext = new ArchivedOrderViewModel(this);
-        }
+        
 
         public void RefreshList()
         {
